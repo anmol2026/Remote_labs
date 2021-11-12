@@ -2,6 +2,7 @@
 :loop
 
 set /a Board = 1
+set /a tt =0
 
 set /a h=%time:~0,2%
 if "%h:~0,1%" == " " set /a h=0%h:~1,1%
@@ -18,7 +19,9 @@ if %m% LSS 30 (set /a slot = %slot%) else (set /a slot = %slot% + 30)
 
 echo %slot%
 
+call python arduino.py %tt%
 call python spreadsheet.py %Board% %slot%
+
 set /p port=< "port.txt"
 
 call gmail.py
