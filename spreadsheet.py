@@ -6,6 +6,8 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
+from datetime import datetime, timedelta
+  
 
 from google.oauth2 import service_account
 
@@ -14,7 +16,8 @@ import sys
 
 board_number = int(sys.argv[1])
 Time_slot = int(sys.argv[2])
-
+# board_number = 1
+# Time_slot = 1030
 
 SERVICE_ACCOUNT_FILE = 'keys.json'
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
@@ -27,14 +30,15 @@ creds = service_account.Credentials.from_service_account_file(
 SAMPLE_SPREADSHEET_ID = '1GuaqLoDwsyotEE5NJult8vJgiKjAIqfGRamyRvB5apc'
 
 
-
+day = (datetime.now()).strftime('%a')
 service = build('sheets', 'v4', credentials=creds)
 
 # Call the Sheets API
 sheet = service.spreadsheets()
 result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                            range="test!C2:O49").execute()
+                            range=day + "!C3:O50").execute()
 values = result.get('values', [])
+
 
 slot_id = 2*(int(int(Time_slot)/100))
 
@@ -68,5 +72,36 @@ else:
 file3 = open(r"email.txt","w+")
 
 file3.write(body)
+
+if(Time_slot==0):
+    dateee = (datetime.now() + timedelta(6)).strftime('%A %d-%b-%Y')
+    day = (datetime.now()+ timedelta(6)).strftime('%a')
+    values = [
+        [
+        "Fill slots for : " + dateee 
+        ],
+
+    ]
+    body = ***REMOVED***
+        'values': values
+  ***REMOVED***
+    result = service.spreadsheets().values().update(
+        spreadsheetId=SAMPLE_SPREADSHEET_ID, range=day + "!A1",
+        valueInputOption="USER_ENTERED", body=body).execute()
+    print('***REMOVED***0} cells updated.'.format(result.get('updatedCells')))
+
+    values = [
+        [
+        "" 
+        ]*12,
+        
+    ]*48
+    body = ***REMOVED***
+        'values': values
+  ***REMOVED***
+    result = service.spreadsheets().values().update(
+        spreadsheetId=SAMPLE_SPREADSHEET_ID, range=day + "C3:O49",
+        valueInputOption="USER_ENTERED", body=body).execute()
+    print('***REMOVED***0} cells updated.'.format(result.get('updatedCells')))
 
 
