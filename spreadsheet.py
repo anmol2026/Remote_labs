@@ -16,6 +16,7 @@ import sys
 
 board_number = int(sys.argv[1])
 Time_slot = int(sys.argv[2])
+ip_addr = int(sys.argv[3])
 # board_number = 1
 # Time_slot = 1030
 
@@ -47,7 +48,7 @@ if(Time_slot%100 == 30):
 
 email = values[slot_id][int(board_number)-1]
 
-ip_addr = socket.gethostbyname(socket.gethostname())
+# ip_addr = socket.gethostbyname(socket.gethostname())
 ip = int(ip_addr[ip_addr.rindex(".")+1:])
 
 
