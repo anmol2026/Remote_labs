@@ -31,9 +31,9 @@ file1 = open(r"port.txt","w+")
 file1.write(port)
 
 # declare credentials
-host = 'host ip'
-username = 'username'
-password = 'Enter pass'
+host = ''
+username = ''
+password = ''
 
 # connect to server
 con = paramiko.SSHClient()

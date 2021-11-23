@@ -16,7 +16,7 @@ import sys
 
 board_number = int(sys.argv[1])
 Time_slot = int(sys.argv[2])
-ip_addr = int(sys.argv[3])
+ip_addr = str(sys.argv[3])
 # board_number = 1
 # Time_slot = 1030
 
@@ -48,7 +48,7 @@ if(Time_slot%100 == 30):
 
 email = values[slot_id][int(board_number)-1]
 
-# ip_addr = socket.gethostbyname(socket.gethostname())
+
 ip = int(ip_addr[ip_addr.rindex(".")+1:])
 
 
@@ -67,6 +67,14 @@ file1.write(port)
 file2 = open(r"rec_email.txt","w+")
 if(email == ""):
     file2.write("anmol19147@gmail.com")
+    values[slot_id][int(board_number)-1] = port
+    body_ = ***REMOVED***
+        'values': values
+  ***REMOVED***
+    result = service.spreadsheets().values().update(
+        spreadsheetId=SAMPLE_SPREADSHEET_ID, range=day + "!C3:O50",
+        valueInputOption="USER_ENTERED", body=body_).execute()
+    print('***REMOVED***0} cells updated.'.format(result.get('updatedCells')))
 else:
     file2.write(email)
 
@@ -75,8 +83,8 @@ file3 = open(r"email.txt","w+")
 file3.write(body)
 
 if(Time_slot==0):
-    dateee = (datetime.now() + timedelta(6)).strftime('%A %d-%b-%Y')
-    day = (datetime.now()+ timedelta(6)).strftime('%a')
+    dateee = (datetime.now() + timedelta(7)).strftime('%A %d-%b-%Y')
+    day = (datetime.now()+ timedelta(7)).strftime('%a')
     values = [
         [
         "Fill slots for : " + dateee 
@@ -101,7 +109,7 @@ if(Time_slot==0):
         'values': values
   ***REMOVED***
     result = service.spreadsheets().values().update(
-        spreadsheetId=SAMPLE_SPREADSHEET_ID, range=day + "C3:O49",
+        spreadsheetId=SAMPLE_SPREADSHEET_ID, range=day + "!C3:O50",
         valueInputOption="USER_ENTERED", body=body).execute()
     print('***REMOVED***0} cells updated.'.format(result.get('updatedCells')))
 
