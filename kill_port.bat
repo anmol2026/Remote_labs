@@ -8,7 +8,7 @@ set m=%%B)
 
 @REM Reading port from text file
 set /p port=< "port.txt"
-echo p
+echo %m%
 
 @REM killing port if m equal 0, 29, 30 or 59
 if %m% EQU 0 (call npx kill-port %port% -t)

@@ -32,9 +32,9 @@ file1 = open(r"port.txt","w+")
 file1.write(port)
 
 # declaring SSH VM credentials
-host = ''
-username = ''
-password = ''
+host = 
+username = 
+password = 
 
 # connect to server
 con = paramiko.SSHClient()
@@ -44,7 +44,7 @@ con.connect(host, username=username, password=password)
 
 
 # execute the script
-stdin, stdout, stderr = con.exec_command('cd "/home/iiitd/BTP_Scripts"; pwd; python3 spreadsheet.py ' + str(board_number) + ' ' + str(Time_slot) + ' '+ str(ip_addr) + '; '+ 'python3 gmail.py')
+stdin, stdout, stderr = con.exec_command('cd "/home/iiitd/BTP_Scripts"' + str(board_number) + ' ; pwd; python3 spreadsheet.py ' + str(board_number) + ' ' + str(Time_slot) + ' '+ str(ip_addr) + '; '+ 'python3 gmail.py')
 
 # printing the output of command
 print(stderr.read())
