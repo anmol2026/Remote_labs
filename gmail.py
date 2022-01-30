@@ -19,7 +19,7 @@ def Create_Service(client_secret_file, api_name, api_version, *scopes):
 
     cred = None
 
-    pickle_file = f'token_***REMOVED***API_SERVICE_NAME}_***REMOVED***API_VERSION}.pickle'
+    pickle_file = f'token_{API_SERVICE_NAME}_{API_VERSION}.pickle'
 
     if os.path.exists(pickle_file):
         with open(pickle_file, 'rb') as token:
@@ -68,5 +68,5 @@ mimeMessage.attach(MIMEText(emailMsg, 'plain'))
 raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode()
 
 #Sending Email to user
-message = service.users().messages().send(userId='me', body=***REMOVED***'raw': raw_string}).execute()
+message = service.users().messages().send(userId='me', body={'raw': raw_string}).execute()
 print(message)

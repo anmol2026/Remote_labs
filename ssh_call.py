@@ -31,10 +31,17 @@ port = str(random.randint(49152,65535))
 file1 = open(r"port.txt","w+")
 file1.write(port)
 
+<<<<<<< HEAD
 # declaring SSH VM credentials
 host = 
 username = 
 password = 
+=======
+# declare credentials
+host = 'host ip'
+username = 'username'
+password = 'Enter pass'
+>>>>>>> parent of 2b3065b (Add files via upload)
 
 # connect to server
 con = paramiko.SSHClient()

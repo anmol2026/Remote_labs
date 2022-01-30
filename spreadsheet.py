@@ -15,6 +15,11 @@ import sys
 board_number = int(sys.argv[1])
 Time_slot = int(sys.argv[2])
 ip_addr = int(sys.argv[3])
+<<<<<<< HEAD
+=======
+# board_number = 1
+# Time_slot = 1030
+>>>>>>> parent of 2b3065b (Add files via upload)
 
 
 # Reading service account file
@@ -74,15 +79,18 @@ file2 = open(r"rec_email.txt","w+")
 if(email == ""):
     # if a slot is not booked then writing the file with a default email
     file2.write("anmol19147@gmail.com")
-    body = ***REMOVED***
+<<<<<<< HEAD
+    body = {
         'values': values
-  ***REMOVED***
+    }
     # update the sheet with the port number of slot if slot is not booked
     result = service.spreadsheets().values().update(
         spreadsheetId=SPREADSHEET_ID, range=day + "C3:O50",
         valueInputOption="USER_ENTERED", body=body).execute()
-    print('***REMOVED***0} cells updated.'.format(result.get('updatedCells')))
+    print('{0} cells updated.'.format(result.get('updatedCells')))
 
+=======
+>>>>>>> parent of 2b3065b (Add files via upload)
 else:
     # if a slot is booked then writing the file with receivers email
     file2.write(email)
@@ -93,26 +101,31 @@ file3.write(body)
 
 # Reseting the sheet for new Day at the end of previous day 
 if(Time_slot==0):
+<<<<<<< HEAD
 
     # assinging day and date for new day
     dateee = (datetime.now() + timedelta(6)).strftime('%A %d-%b-%Y')
     day = (datetime.now()+ timedelta(6)).strftime('%a')
 
+=======
+    dateee = (datetime.now() + timedelta(6)).strftime('%A %d-%b-%Y')
+    day = (datetime.now()+ timedelta(6)).strftime('%a')
+>>>>>>> parent of 2b3065b (Add files via upload)
     values = [
         [
         "Fill slots for : " + dateee 
         ],
 
     ]
-    body = ***REMOVED***
+    body = {
         'values': values
-  ***REMOVED***
+    }
 
     # updating the sheet with header of new day
     result = service.spreadsheets().values().update(
         spreadsheetId=SPREADSHEET_ID, range=day + "!A1",
         valueInputOption="USER_ENTERED", body=body).execute()
-    print('***REMOVED***0} cells updated.'.format(result.get('updatedCells')))
+    print('{0} cells updated.'.format(result.get('updatedCells')))
 
     # Assining new values as blank sheet
     values = [
@@ -121,13 +134,17 @@ if(Time_slot==0):
         ]*12,
         
     ]*48
-    body = ***REMOVED***
+    body = {
         'values': values
-  ***REMOVED***
+    }
     # writing the sheet with blank values
     result = service.spreadsheets().values().update(
+<<<<<<< HEAD
         spreadsheetId=SPREADSHEET_ID, range=day + "C3:O49",
+=======
+        spreadsheetId=SAMPLE_SPREADSHEET_ID, range=day + "C3:O49",
+>>>>>>> parent of 2b3065b (Add files via upload)
         valueInputOption="USER_ENTERED", body=body).execute()
-    print('***REMOVED***0} cells updated.'.format(result.get('updatedCells')))
+    print('{0} cells updated.'.format(result.get('updatedCells')))
 
 

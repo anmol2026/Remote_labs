@@ -38,7 +38,7 @@ def limitCheck(mail,limit):
     result = sheet.values().get(spreadsheetId=SPREADSHEET_ID,
                                 range="Sheet9!L:M").execute()
     values = result.get('values', [])
-    Dict_value = ***REMOVED***}
+    Dict_value = {}
     for i in range(1, 100):
         Dict_value[values[i][0]] = int(values[i][1])
 
@@ -71,7 +71,7 @@ while (True):
         # Assiging s, s1, s2 as Slot id's for board 1 , 2 and 3 respectively
         s = str(values[counter][0])
 
-        cells = ***REMOVED***}
+        cells = {}
 
         for i in range(brd_count):
             cells[i] = s[0:4] + chr(ord('C') + i) + s[5:]
@@ -98,13 +98,13 @@ while (True):
                         ]
 
                     ]
-                    body = ***REMOVED***
+                    body = {
                         'values': values
-                  ***REMOVED***
+                    }
                     result = service.spreadsheets().values().update(
                         spreadsheetId=SPREADSHEET_ID, range=cells[i],
                         valueInputOption="USER_ENTERED", body=body).execute()
-                    print('***REMOVED***0} cells updated.'.format(result.get('updatedCells')))
+                    print('{0} cells updated.'.format(result.get('updatedCells')))
                     counter += 1
                     updt = True
                     break;
